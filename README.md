@@ -1,8 +1,5 @@
-# ELECTRONIC-KEY-AND-LOCK
-ELECTRONIC DOOR 🔐🚪 LOCKING MECHANISM
-
 # RFID DOOR LOCK
-ACCESS CONTROL SYSTEM USING RFID TAGS 🚪🔒
+ACCESS CONTROL SYSTEM 🔐🚪 USING RFID TAGS
 
 This project is an RFID door lock system that allows authorized individuals to unlock doors by scanning their RFID cards or tags. It is implemented using Arduino.
 
