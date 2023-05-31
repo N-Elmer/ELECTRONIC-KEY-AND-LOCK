@@ -1,7 +1,7 @@
-# RFID DOOR LOCK
-ACCESS CONTROL SYSTEM 🔐🚪 USING RFID TAGS
+# RFID Door Lock
+RFID-based Door Lock System 🔐🚪
 
-This project is an RFID door lock system that allows authorized individuals to unlock doors by scanning their RFID cards or tags. It is implemented using Arduino.
+This project implements a door lock system that uses RFID tags for access control. Authorized individuals can unlock the door by scanning their RFID cards or tags. The project is implemented using Arduino and written in C++.
 
 ## Folder Structure
 
@@ -11,9 +11,19 @@ This project is an RFID door lock system that allows authorized individuals to u
    
    ├── 📂 Libraries
    
-   │     ├── 🔌 RFID.h
+   │     ├── ⚙️ MFRC522.h
    
-   │     └── 🔌 Servo.h
+   │     ├── ⚙️ Servo.h
+   
+   │     └── ⚙️ SPI.h
+   
+   │   
+   
+   ├── 📂 Source
+   
+   │     ├── ⚙️ RFIDDoorLock.h
+   
+   │     └── ⚙️ RFIDDoorLock.cpp
    
    │   
    
@@ -24,10 +34,15 @@ This project is an RFID door lock system that allows authorized individuals to u
 The project folder structure consists of the following files and directories:
 
 - **Libraries**: This directory contains the necessary libraries for the project.
-  - 🔌 RFID.h: Library for handling RFID functionality.
-  - 🔌 Servo.h: Library for controlling the servo motor.
+  - ⚙️ MFRC522.h: Library for interfacing with the MFRC522 RFID module.
+  - ⚙️ Servo.h: Library for controlling servo motors.
+  - ⚙️ SPI.h: Library for SPI communication.
   
-- ⚙️ RFID_Door_Lock.ino: The main Arduino file that contains the code for the RFID door lock system.
+- **Source**: This directory contains the source code files for the RFID door lock class.
+  - ⚙️ RFIDDoorLock.h: Header file containing the class declaration for the RFID door lock.
+  - ⚙️ RFIDDoorLock.cpp: Source file containing the implementation of the RFID door lock class.
+  
+- ⚙️ RFID_Door_Lock.ino: The main Arduino sketch file that initializes the RFID door lock object and calls its methods.
 
 - ⚙️ README.md: The documentation file explaining the project and its usage.
 
@@ -36,48 +51,42 @@ The project folder structure consists of the following files and directories:
 To use this project, you will need the following components:
 
 - Arduino board (e.g., Arduino Uno)
-- RFID reader
+- MFRC522 RFID module
 - Servo motor
 - RFID cards or tags
 
 Follow these steps to set up the project:
 
-1. Connect the RFID reader to the Arduino board.
-2. Connect the servo motor to the Arduino board.
-3. Connect the necessary power and ground connections.
-4. Download and install the Arduino IDE from the official Arduino website.
-5. Clone or download this project repository.
-6. Open `RFID_Door_Lock.ino` file in the Arduino IDE.
-7. Install the required libraries using the Arduino Library Manager or manually by placing them in the appropriate libraries folder.
-8. Select the correct Arduino board and port in the Arduino IDE.
-9. Upload the code to the Arduino board.
-10. Ensure that the RFID reader and servo motor are properly connected and functioning.
-11. Scan an authorized RFID card or tag on the RFID reader to unlock the door.
+1. Download and install the Arduino IDE from the official Arduino website.
+2. Clone or download this project repository.
+3. Connect the MFRC522 RFID module to the Arduino board.
+4. Connect the servo motor to the Arduino board.
+5. Open the `RFID_Door_Lock.ino` file in the Arduino IDE.
+6. Install the required libraries (`MFRC522`, `Servo`, and `SPI`) using the Arduino Library Manager.
+7. Upload the code to the Arduino board.
+8. Monitor the serial output to see the RFID card scanning results.
 
 ## Code Explanation
 
-The `RFID_Door_Lock.ino` file contains the code for the RFID door lock system. In the `setup()` function, it initializes the serial communication, RFID reader, and servo motor. The `loop()` function continuously checks if a new RFID card or tag is detected. If a card is detected, it reads the card's unique identifier (UID) and compares it with the authorized card UID. If the UID matches, it calls the `unlockDoor()` function to unlock the door by controlling the servo motor. If the UID doesn't match, it prints an "Unauthorized access" message and keeps the door locked.
+The RFID door lock functionality is implemented using an object-oriented approach with multiple files. The main sketch file `RFID_Door_Lock.ino` creates an instance of the `RFIDDoorLock` class and calls its methods.
 
-The `unlockDoor()` function rotates the servo motor to a specific angle to unlock the door for a certain duration. After the specified duration, it rotates the servo motor back to its initial position to lock the door again.
+The `RFIDDoorLock` class is defined in the `RFIDDoorLock.h` header file and implemented in the `RFIDDoorLock.cpp` source file. It handles the RFID card scanning and door locking/unlocking. The class utilizes the `MFRC522` library for interfacing with the RFID module and the `Servo` library for controlling the servo motor.
 
-## Requirements
-
-The following libraries are required for this project:
-
-- RFID
-- Servo
-
-You can install these libraries using the Arduino Library Manager or by manually adding them to the libraries folder in your Arduino installation.
+Make sure to connect the MFRC522 RFID module and servo motor correctly to the Arduino board and adjust the necessary pins in the code if required.
 
 ## Troubleshooting
 
 If you encounter any issues or have trouble setting up the project, consider the following steps:
 
-- Double-check the wiring connections between the components and the Arduino board.
-- Ensure that the correct libraries are installed.
+- Double-check the wiring connections between the components and the
+
+ Arduino board.
+- Ensure that the correct libraries (`MFRC522`, `Servo`, and `SPI`) are installed.
 - Verify that the Arduino board and port are selected correctly in the Arduino IDE.
 - Check the serial monitor for any error messages or unexpected behavior.
 
 If the problem persists, feel free to seek assistance from the Arduino community or consult the official Arduino documentation.
 
-##
+---
+
+This README file provides an overview of the RFID Door Lock project, its folder structure, installation instructions, code explanation, and troubleshooting tips. Use it as a guide to set up and understand the project.
