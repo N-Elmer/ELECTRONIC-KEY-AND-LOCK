@@ -1,0 +1,8 @@
+LIBRARIES NEEDED
+
+🔽🔽
+
+RFID
+MFRC522
+Servo
+SPI
